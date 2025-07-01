@@ -13,6 +13,12 @@
 	response.addCookie(cookie);
 	out.println("쿠키 생성이 완료되었습니다.<br>");
 %>
+	<form action = "cookie02_process2.jsp" method = "post">
+	<input type = "submit" value = "쿠키 전체 보기">
+	</form>
 	
+	<form action = "cookie02.jsp" method = "post">
+	<input type = "submit" value = "쿠키 굽기">
+	</form>	
 </body>
 </html>

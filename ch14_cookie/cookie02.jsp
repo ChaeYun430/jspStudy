@@ -3,7 +3,7 @@
 <title>cookie input</title></head>
 <body>
 <form action = "cookie02_process.jsp" method = "post">
-	<p>이름 : <input type = "text" name = "naem">
+	<p>이름 : <input type = "text" name = "name">
 	<p>값 : <input type = "text" name = "value">
 	<p> <input type = "submit" value = "전송">
 </form>
