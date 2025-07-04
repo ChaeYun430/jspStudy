@@ -8,8 +8,6 @@ public class DBconn {
 	
 	Connection conn = null;
 	
-	
-	//기본 생성자
 	public DBconn() throws ClassNotFoundException, SQLException {
 		try{
 		Class.forName("com.mysql.jdbc.Driver");

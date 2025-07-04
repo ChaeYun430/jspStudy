@@ -1,7 +1,12 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 
+import dao.DBconn;
+import dao.OrderProductDAO;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,10 +15,17 @@ import jakarta.servlet.http.HttpServletResponse;
 public class CartController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
+	static OrderProductDAO opDAO ;
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);		
+	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-				
+		try {
+		opDAO = new OrderProductDAO();		
 		String RequestURI = req.getRequestURI();
 		String contextPath = req.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
@@ -21,42 +33,25 @@ public class CartController extends HttpServlet{
 		res.setContentType("text/html; charset=utf-8");
 		req.setCharacterEncoding("utf-8");
 		
-		if (command.equals("/BoardListAction.do")) {//등록된 글 목록 페이지 출력하기
-			requestBoardList(request);
-			RequestDispatcher rd = request.getRequestDispatcher("./board/list.jsp");
-			rd.forward(request, response);
-		} else if (command.equals("/BoardWriteForm.do")) { //글 등록 페이지 출력
-				requestLoginName(request);
-				RequestDispatcher rd = request.getRequestDispatcher("./board/writeForm.jsp");
-				rd.forward(request, response);				
-		} else if (command.equals("/BoardWriteAction.do")) {//새로운 글 등록
-				requestBoardWrite(request);
-				RequestDispatcher rd = request.getRequestDispatcher("/BoardListAction.do");
-				rd.forward(request, response);						
-		} else if (command.equals("/BoardViewAction.do")) {//선택된 글 상자 페이지 가져오기
-				requestBoardView(request);
-				RequestDispatcher rd = request.getRequestDispatcher("/BoardView.do");
-				rd.forward(request, response);						
-		} else if (command.equals("/BoardView.do")) {  //글 상세 페이지 출
-				RequestDispatcher rd = request.getRequestDispatcher("./board/view.jsp");
-				rd.forward(request, response);	
-		} else if (command.equals("/BoardUpdateAction.do")) { //선택된 글 수정하기
-				requestBoardUpdate(request);
-				RequestDispatcher rd = request.getRequestDispatcher("/BoardListAction.do");
-				rd.forward(request, response);
-		}else if (command.equals("/BoardDeleteAction.do")) { //선택된 글 삭제하기
-				requestBoardDelete(request);
-				RequestDispatcher rd = request.getRequestDispatcher("/BoardListAction.do");
-				rd.forward(request,
-		if (command) {
+		if (command.equals("/CartListAction.do")) {//장바구니 목록 보기
+			requestCartList(req);
+			RequestDispatcher rd = req.getRequestDispatcher("./cart/cartPage.jsp");
+			rd.forward(req, res);
+		} 
+		}catch(SQLException sqlE) {
 			
+		}catch (ClassNotFoundException e) {
+		
 		}
-
+		
+	//	action = "artListAction.do???????????"
 	}
-	
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);		
+	private void requestCartList(HttpServletRequest req) {
+		// TODO Auto-generated method stub
+		
 	}
+
+
+
 }

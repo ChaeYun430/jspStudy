@@ -1,35 +1,69 @@
 package dto;
 
-public class OrderlistDTO {
-	
+import java.sql.Date;
+
+public class OrderListDTO {
 	private int orderNum ;
-	private String productID ;
-	private int quantity;
-	private int totalPrice;
+	private MemberDTO memberDTO;
+	private OrderProductDTO OrderProduct;
+	private String request;
+	private Date payDate;
+	
+//	private String id;
+//	private String password;
+//	private String name;
+//	private String birth;
+//	private String gender;
+//	private String mail;
+//	private String phone;
+//	private String address;
+//	private Date regist_day;
+//	
+//	private String cardNum;
+//	private String cvc;
+//	private String valid;
+//	private String cardPw;
+	
+	
+//	private int orderProductNum;
+//	private String productID ;
+//	private int quantity;
+//	private int totalPrice;
+	
+	
+	
 	public int getOrderNum() {
 		return orderNum;
 	}
 	public void setOrderNum(int orderNum) {
 		this.orderNum = orderNum;
 	}
-	public String getProductID() {
-		return productID;
+	public MemberDTO getMemberDTO() {
+		return memberDTO;
 	}
-	public void setProductID(String productID) {
-		this.productID = productID;
+	public void setMemberDTO(MemberDTO memberDTO) {
+		this.memberDTO = memberDTO;
 	}
-	public int getQuantity() {
-		return quantity;
+	public OrderProductDTO getOrderProduct() {
+		return OrderProduct;
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setOrderProduct(OrderProductDTO orderProduct) {
+		OrderProduct = orderProduct;
 	}
-	public int getTotalPrice() {
-		return totalPrice;
+	public String getRequest() {
+		return request;
 	}
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setRequest(String request) {
+		this.request = request;
 	}
+	public Date getPayDate() {
+		return payDate;
+	}
+	public void setPayDate(Date payDate) {
+		this.payDate = payDate;
+	}
+	
+	
 	
 	
 	
